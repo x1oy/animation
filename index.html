@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
   <style>
+    /* Общие стили */
     body {
       display: flex;
       justify-content: center;
@@ -16,69 +17,85 @@
       background: white;
       margin: 0;
       overflow: hidden;
+      font-family: "Rubik Mono One", serif;
     }
 
     .container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 100%;
+      max-width: 300px; /* Ограничиваем максимальную ширину */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .heart {
-      width: 100px;
-      height: 100px;
+      width: 20vw; /* Относительный размер */
+      height: 20vw;
+      max-width: 100px; /* Ограничиваем максимальный размер */
+      max-height: 100px;
       background-color: red;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
+      position: relative;
+      transform: rotate(-45deg);
       animation: beat 1s infinite alternate;
     }
 
     .heart::before,
     .heart::after {
       content: "";
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: 100%;
       background-color: red;
       border-radius: 50%;
       position: absolute;
     }
 
-    .heart::before { top: -50px; left: 0; }
-    .heart::after { top: 0; left: 50px; }
+    .heart::before { top: -50%; left: 0; }
+    .heart::after { top: 0; left: 50%; }
 
     @keyframes beat {
       0% { transform: scale(1) rotate(-45deg); }
       100% { transform: scale(1.2) rotate(-45deg); }
     }
 
-  
+    /* Текст под сердечком */
     .text {
       position: absolute;
-      top: 110%; 
-      left: 66.5%;
-      transform: translateX(-50%);
-      font-size: 24px;
-      color: black;
-      text-align: center;
-      font-family: "Rubik Mono One", serif;
-      font-weight: 400;
-      font-style: normal;
+      top: 110%; /* Расстояние от сердца */
+      font-size: 6vw; /* Относительный размер шрифта */
       color: red;
+      text-align: center;
       opacity: 0;
       animation: fadeIn 3s forwards;
       animation-delay: 2s;
     }
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
 
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Медиа-запросы для тонкой настройки */
+    @media (max-width: 600px) {
+      .heart {
+        width: 25vw;
+        height: 25vw;
+      }
+      .text {
+        font-size: 7vw; /* Увеличиваем шрифт для маленьких экранов */
+      }
+    }
+
+    @media (max-width: 400px) {
+      .heart {
+        width: 30vw;
+        height: 30vw;
+      }
+      .text {
+        font-size: 8vw;
+      }
+    }
   </style>
 </head>
 <body>
@@ -90,3 +107,4 @@
 
 </body>
 </html>
+
