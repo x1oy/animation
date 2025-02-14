@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сердце с текстом</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: white;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .heart {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      animation: beat 1s infinite alternate;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before { top: -50px; left: 0; }
+    .heart::after { top: 0; left: 50px; }
+
+    @keyframes beat {
+      0% { transform: scale(1) rotate(-45deg); }
+      100% { transform: scale(1.2) rotate(-45deg); }
+    }
+
+  
+    .text {
+      position: absolute;
+      top: 110%; 
+      left: 66.5%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: black;
+      text-align: center;
+      font-family: "Rubik Mono One", serif;
+      font-weight: 400;
+      font-style: normal;
+      color: red;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      animation-delay: 2s;
+    }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="heart"></div>
+  <div class="text">Что Смотришь :)</div>
+</div>
+
+</body>
+</html>
